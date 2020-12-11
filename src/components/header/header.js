@@ -1,0 +1,1 @@
+//A <Header> component which shows the name of your virtual store

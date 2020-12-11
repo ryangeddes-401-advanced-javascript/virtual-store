@@ -1,0 +1,1 @@
+//A <Footer> component which shows your copyright and contact information
