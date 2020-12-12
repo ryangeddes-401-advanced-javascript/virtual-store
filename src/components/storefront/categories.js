@@ -33,7 +33,7 @@ let theme = createMuiTheme({
 export default function Categories(){
   theme = responsiveFontSizes(theme);
   const dispatch = useDispatch();
-  const category = useSelector ( (state) => state.categories.category)
+  const category = useSelector ( (state) => state.categories.activeCategory)
 
   const toggleF = () => {
     dispatch (actions.toggleFood());

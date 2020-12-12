@@ -10,7 +10,7 @@
 // exported together to the app's index file.
 
 const initialState = {
-  category: 'none'
+  activeCategory: 'none'
 }
 
 export default function reducer(state=initialState, action){
@@ -19,9 +19,9 @@ export default function reducer(state=initialState, action){
 
   switch(type){
     case "FOOD":
-      return {category: 'FOOD'}
+      return {activeCategory: 'FOOD'}
     case "ELECTRONICS":
-      return {category: 'ELECTRONICS'}
+      return {activeCategory: 'ELECTRONICS'}
     default:
       return state;
 }

@@ -11,6 +11,8 @@ import {Provider} from 'react-redux';
 //import components here from ./components
 import Header from './components/header/header.js';
 import Categories from './components/storefront/categories.js';
+import CurrentCat from './components/storefront/current-category.js'
+import Products from './components/storefront/products.js'
 
 
 
@@ -24,10 +26,10 @@ function App() {
   return (
     
     <Provider store={store}>
-    <Header />
-    <Categories />
-    {/* //use created components */}
-        
+      <Header />
+      <Categories />
+      <CurrentCat/>
+      <Products/>
     </Provider>    
   );
 }
