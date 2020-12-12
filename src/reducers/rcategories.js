@@ -6,4 +6,24 @@
 
 
 //export this default category reducer function.  
-//It will be imported by the index where it can be combined with other reducers and exported together to the app's index file.
+//It will be imported by the index where it can be combined with other reducers and
+// exported together to the app's index file.
+
+const initialState = {
+  category: 'none'
+}
+
+export default function reducer(state=initialState, action){
+
+  const {type, payload} = action;
+
+  switch(type){
+    case "FOOD":
+      return {category: 'FOOD'}
+    case "ELECTRONICS":
+      return {category: 'ELECTRONICS'}
+    default:
+      return state;
+}
+
+}
