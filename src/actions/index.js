@@ -22,3 +22,10 @@ export const toggleElectronics = () => {
   }
 }
 
+export const addCartAction = (product) => {
+  return{
+    type: 'ADDCART',
+    payload: product
+  }
+
+}

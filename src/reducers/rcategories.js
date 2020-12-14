@@ -13,6 +13,8 @@ const initialState = {
   activeCategory: 'none'
 }
 
+// Each category should have a normalized name, display name, and a description
+
 export default function reducer(state=initialState, action){
 
   const {type, payload} = action;

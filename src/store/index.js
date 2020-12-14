@@ -9,7 +9,8 @@ import products from '../reducers/rproducts.js'
 //Combiner
 const allReducers = combineReducers({
    categories: categories,
-   activeList: products
+   activeList: products,
+   cart:cart,
 });
 
 export default createStore(

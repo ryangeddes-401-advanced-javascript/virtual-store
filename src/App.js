@@ -10,9 +10,11 @@ import store from './store';
 import {Provider} from 'react-redux';
 //import components here from ./components
 import Header from './components/header/header.js';
+import Footer from './components/footer/footer.js';
 import Categories from './components/storefront/categories.js';
-import CurrentCat from './components/storefront/current-category.js'
+import ActiveCat from './components/storefront/current-category.js'
 import Products from './components/storefront/products.js'
+import Cart from './components/cart/simplecart'
 
 
 
@@ -27,9 +29,11 @@ function App() {
     
     <Provider store={store}>
       <Header />
+      <Cart />
       <Categories />
-      <CurrentCat/>
+      <ActiveCat/>
       <Products/>
+      <Footer />
     </Provider>    
   );
 }

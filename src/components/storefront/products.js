@@ -1,34 +1,54 @@
 // A <Products> component
 // Displays a list of products associated with the selected category
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography';
+import {responsiveFontSizes, createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import * as actions from '../../actions';
 
+//I don't think this is doing anything... probablywired up incorrectly.
+let theme = createMuiTheme({
+  typography: {
+    subtitle1: {
+      fontSize: 12,
+    },
+    body1: {
+      fontWeight: 500,
+    },
+    button: {
+      fontStyle: 'none',
+      fontSize: 28,
+    },
+  },
+});
 
-
-const DisplayList = ({list, category})=> {
-
-  return(
-  <span>
-    {list.map((item, i) => (
-      <>
-      <h3 key={i}>{item}</h3>
-      <img src={`https://source.unsplash.com/300x300?${category},${i}`} />
-      </>
-    ))};
-  </span>
-  )
-};
 
 function Products() {
+  theme = responsiveFontSizes(theme);
+
   const activeProduct = useSelector ((state) => state.activeList.activeList)
   const category = useSelector ((state) => state.categories.activeCategory)
+  const dispatch = useDispatch();
+
+  const addCart = (product) =>{
+    dispatch(actions.addCartAction(product))
+  }
     return(
-      <div> 
+      <ThemeProvider> 
         <Container maxWidth="md" >
-          <DisplayList list={activeProduct} category={category}/>
+          <span>
+            {Object.entries(activeProduct).map((item, i) => (
+              <>
+              <h3 key={Math.random()}>{item.name}</h3>
+              <img src={`https://source.unsplash.com/300x300?${category},${i}`} />
+              <Button onClick={()=> addCart(item)}>Add to Cart</Button>
+              </>
+            ))}
+          </span>
         </Container>
-      </div>
+      </ThemeProvider> 
     )
 }
 
