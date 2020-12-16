@@ -14,7 +14,7 @@ import Footer from './components/footer/footer.js';
 import Categories from './components/storefront/categories.js';
 import ActiveCat from './components/storefront/current-category.js'
 import Products from './components/storefront/products.js'
-import Cart from './components/cart/simplecart'
+import SimpleCart from './components/cart/simplecart'
 
 
 
@@ -29,7 +29,7 @@ function App() {
     
     <Provider store={store}>
       <Header />
-      <Cart />
+      <SimpleCart />
       <Categories />
       <ActiveCat/>
       <Products/>

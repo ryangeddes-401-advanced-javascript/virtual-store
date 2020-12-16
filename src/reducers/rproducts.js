@@ -84,23 +84,29 @@ export default function reducer(state=initialState, action){
 
   switch(type){
     case "FOOD":
-      return {activeList: foodList}
+      return {...state, activeList: {...foodList}}
     case "ELECTRONICS":
-      return {activeList: elecList}
+      return {...state, activeList: {...elecList}}
     case "ADDCART":
-      // this should spread out the selected item and reduce it by one
-      let reducedProduct = {...elecList[product.name], ...{inventory: elecList[product.name].inventory -1}}
-      let spreadObj = {};
-      spreadObj[reducedProduct.name] =  reducedProduct;
-      
-      let newList = {...elecList, ...spreadObj}
-      //....there has to be a cleaner way to do this
-      return {...state, ...newList}
+        let name = Object.keys(payload)[0];
+        state.activeList =  {...state.activeList, [name]: {...state.activeList[name], inventory: state.activeList[name].inventory -1}}
+        return state;
+
     default:
       return state;
   }
 
 }
+
+
+      // // this should spread out the selected item and reduce it by one
+      // let reducedProduct = {...state.activeList[payload.name], ...{inventory: state.activeList[payload.name].inventory -1}}
+      // activeList = {...foodList, lobster:{...foodList.lobster, inventory:400}}
+
+      // let spreadObj = {};
+      // spreadObj[reducedProduct.name] =  reducedProduct;
+      // let newList = {...state.activeList, ...spreadObj}
+      //....there has to be a cleaner way to do this
 
 
 

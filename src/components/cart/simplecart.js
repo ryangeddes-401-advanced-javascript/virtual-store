@@ -14,31 +14,91 @@
 
 import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/core/styles';
 
-export default function SimpleCart(){
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+function SimpleCart(){
+  const classes = useStyles();
   const cart = useSelector((state) =>(state.cart.cart))
-  //const [localCart, setCart] = useState(cart);
-  let tempArray = []
 
-  useEffect ( () =>{
-    tempArray = cart;
-  }, [cart]);
-
- let renderCart = tempArray.map((item)=>(
-      <>
-      {console.log(item)}
-      <div key={Math.random()}>
-        {item.name}
-      </div>
-      </>
-    ));
 
   return(
     <>
-    <div> 
-      <h3>cart </h3>
-      {renderCart}
-    </div>
-    </>
+     <List component="nav" className={classes.root}>
+     {
+      cart.map(product => {
+        return (
+          <ListItem key={Math.random()} >
+            <ListItemText primary={Object.keys(product)[0]}/>
+            {/* <IconButton aria-label="delete" onClick={() => destroy(product)}> */}
+              {/* <DeleteIcon />
+            </IconButton > */}
+          </ListItem>
+        )
+      })
+    }
+    </List>
+  </>
+
   )
 }
+
+export default SimpleCart;
+
+
+// DAVEE CODE:
+
+// import React from 'react';
+// import {useSelector, useDispatch} from 'react-redux';
+// import { makeStyles } from '@material-ui/core/styles';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import IconButton from '@material-ui/core/IconButton';
+// import DeleteIcon from '@material-ui/icons/Delete';
+// import {deleteFromCart} from '../../store/cart.js';
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     width: '100%',
+//     maxWidth: 360,
+//     backgroundColor: theme.palette.background.paper,
+//   },
+// }));
+// function SimpleCart() {
+//   const classes = useStyles();
+//   let cart = useSelector( state => state.cart.cart);
+//   let dispatch = useDispatch();
+//   const destroy = (product) => {
+//     dispatch(deleteFromCart(product))
+//   }
+//   // console.log('cart: ', cart);
+//   return (
+//     <>
+//     <List component="nav" className={classes.root}>
+//     {
+//       cart.map(product => {
+//         return (
+//           <ListItem key={product._id} >
+//             <ListItemText primary={product.name} />
+//             <IconButton aria-label="delete" onClick={() => destroy(product)}>
+//               <DeleteIcon />
+//             </IconButton >
+//           </ListItem>
+//         )
+//       })
+//     }
+//     </List>
+//     </>
+//   )
+// }
+// export default SimpleCart;

@@ -31,18 +31,21 @@ function Products() {
   const activeProduct = useSelector ((state) => state.activeList.activeList)
   const category = useSelector ((state) => state.categories.activeCategory)
   const dispatch = useDispatch();
-
   const addCart = (product) =>{
-    dispatch(actions.addCartAction(product))
+    let prodName = product[0]
+    let prodObj = {
+      [prodName]: product[1]
+    }
+    dispatch(actions.addCartAction(prodObj))
   }
     return(
       <ThemeProvider> 
         <Container maxWidth="md" >
           <span>
-            {Object.entries(activeProduct).map((item, i) => (
+            {Object.entries(activeProduct).map((item, i) =>(
               <>
-              <h3 key={Math.random()}>{item.name}</h3>
-              <img src={`https://source.unsplash.com/300x300?${category},${i}`} />
+              <h3 key={Math.random()}>{item[0]}</h3>
+              <img src={`https://source.unsplash.com/300x300?${item[0]}`} />
               <Button onClick={()=> addCart(item)}>Add to Cart</Button>
               </>
             ))}
