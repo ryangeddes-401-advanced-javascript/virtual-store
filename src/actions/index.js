@@ -1,3 +1,10 @@
+'use strict';
+
+export const changeCategory = (category) => {
+  return{
+    type: category
+  }
+};
 
 
 //within this file, declare your actions!
