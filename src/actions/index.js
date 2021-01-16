@@ -1,4 +1,3 @@
-'use strict';
 
 //within this file, declare your actions!
 //these actions will be exported directly to the React components that require them

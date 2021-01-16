@@ -12,7 +12,7 @@
 // Reduce the number in stock for that product
 
 
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {useSelector} from 'react-redux';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';

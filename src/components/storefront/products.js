@@ -3,7 +3,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography';
+//import Typography from '@material-ui/core/Typography';
 import {responsiveFontSizes, createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import * as actions from '../../actions';
@@ -29,7 +29,7 @@ function Products() {
   theme = responsiveFontSizes(theme);
 
   const activeProduct = useSelector ((state) => state.activeList.activeList)
-  const category = useSelector ((state) => state.categories.activeCategory)
+  //const category = useSelector ((state) => state.categories.activeCategory)
   const dispatch = useDispatch();
   const addCart = (product) =>{
     let prodName = product[0]
@@ -45,7 +45,7 @@ function Products() {
             {Object.entries(activeProduct).map((item, i) =>(
               <>
               <h3 key={Math.random()}>{item[0]}</h3>
-              <img src={`https://source.unsplash.com/300x300?${item[0]}`} />
+              <img alt='' src={`https://source.unsplash.com/300x300?${item[0]}`} />
               <Button onClick={()=> addCart(item)}>Add to Cart</Button>
               </>
             ))}
