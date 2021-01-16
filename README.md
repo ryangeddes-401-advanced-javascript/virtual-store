@@ -1,6 +1,6 @@
-#Virtual Store
+# Virtual Store
 
-##Netlify Deployment: https://jovial-mirzakhani-95609f.netlify.app/
+## Netlify Deployment: https://jovial-mirzakhani-95609f.netlify.app/
 
 ### Project Details:
 
